@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="Кусто, Россия, Места, Путешествия">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Место</title>
+</head>
+<body class="page">
+<header class="header">
+    <img class="header__logo" title="" src="./images/header_logo.svg" alt="ЛоготипMesto">
+</header>
+<main class="content">
+    <section class="profile">
+        <div class="profile__titles">
+            <img class="profile__avatar" title="" src="./images/ava.jpg" alt="Аватарка">
+            <div class="profile__titles-box">
+                <div class="profile__title-box">
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <button class="profile__button-edit" type="button" aria-label="Отредактировать профиль"></button>
+                </div>
+                <p class="profile__description">Исследователь океана</p>
+            </div>
+        </div>
+        <button class="profile__add-button" type="button" aria-label="Добавить новую карточку"></button>
+    </section>
+    <section class="elements">
+        <article class="element">
+            <div class="element__rectangle">
+                <img class="element__photo" src="./images/cards/abhaz.jpg" alt="Абхазия">
+                <div class="element__description">
+                    <h2 class="element__title">Абхазия</h2>
+                    <button class="element__like" type="button"></button>
+                </div>
+            </div>
+        </article>
+        <article class="element">
+            <div class="element__rectangle">
+                <img class="element__photo" src="./images/cards/baikal.jpg" alt="Байкал">
+                <div class="element__description">
+                    <h2 class="element__title">Байкал</h2>
+                    <button class="element__like" type="button"></button>
+                </div>
+            </div>
+        </article>
+        <article class="element">
+            <div class="element__rectangle">
+                <img class="element__photo" src="./images/cards/mac.jpg" alt="МоёПризвание">
+                <div class="element__description">
+                    <h2 class="element__title">Я - веб-разработчик</h2>
+                    <button class="element__like" type="button"></button>
+                </div>
+            </div>
+        </article>
+        <article class="element">
+            <div class="element__rectangle">
+                <img class="element__photo" src="./images/cards/sibir.jpg" alt="Сибирь">
+                <div class="element__description">
+                    <h2 class="element__title">Сибирь</h2>
+                    <button class="element__like" type="button"></button>
+                </div>
+            </div>
+        </article>
+        <article class="element">
+            <div class="element__rectangle">
+                <img class="element__photo" src="./images/cards/sochi.jpg" alt="Сочи">
+                <div class="element__description">
+                    <h2 class="element__title">Сочи</h2>
+                    <button class="element__like" type="button"></button>
+                </div>
+            </div>
+        </article>
+        <article class="element">
+            <div class="element__rectangle">
+                <img class="element__photo" src="./images/cards/ural.jpg" alt="Урал">
+                <div class="element__description">
+                    <h2 class="element__title">Урал</h2>
+                    <button class="element__like" type="button"></button>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
+<footer class="footer">
+    <p class="footer__copyright">&copy; 2021. Mesto Russia</p>
+</footer>
+<section class="popup-edit popup_closed">
+    <form class="popup-edit__container">
+        <button class="popup-edit__button-close" type="reset"></button>
+        <h2 class="popup-edit__title">Редактировать профиль</h2>
+        <input class="popup-edit__name" placeholder="Имя" type="text" value="Жак-Ив Кусто">
+        <input class="popup-edit__description" placeholder="О себе" type="text" value="Исследователь океана">
+        <button class="popup-edit__submit" type="submit">Сохранить</button>
+    </form>
+</section>
+<script src="script/script.js"></script>
+</body>
+</html>
