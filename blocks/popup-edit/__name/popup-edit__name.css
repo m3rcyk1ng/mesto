@@ -1,7 +1,6 @@
 .popup-edit__name {
     width: 358px;
     height: 27px;
-    border-bottom: #545454;
     margin: 0 auto 30px;
     font-size: 14px;
     line-height: 17px;
@@ -14,6 +13,5 @@
     .popup-edit__name {
         width: 238px;
         height: 27px;
-
     }
 }
