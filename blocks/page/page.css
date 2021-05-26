@@ -11,10 +11,10 @@
     position: relative;
 }
 
-div, p, h1, h2, h3, ul, li, a, img {
-   outline: 1px red dashed;
-}
+/*div, p, h1, h2, h3, ul, li, a, img {*/
+/*   outline: 1px red dashed;*/
+/*}*/
 
-section {
-    outline: 1px green dashed;
-}
+/*section {*/
+/*    outline: 1px green dashed;*/
+/*}*/

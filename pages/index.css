@@ -1,5 +1,7 @@
+/* ============= etc ============= */
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts.css);
+@import url(../blocks/page/page.css);
 
 /* === header === */
 @import url(../blocks/header/header.css);
@@ -37,7 +39,5 @@
 @import url(../blocks/popup-edit/__title/popup-edit__title.css);
 @import url(../blocks/popup-edit/__container/popup-edit__container.css);
 @import url(../blocks/popup-edit/__submit/popup-edit__submit.css);
-@import url(../blocks/popup_closed/popup_closed.css);
-
-/* ============= etc ============= */
-@import url(../blocks/page/page.css);
+@import url(../blocks/popup-edit/popup-edit.css);
+@import url(../blocks/popup-edit/_open/popup-edit_open.css);
