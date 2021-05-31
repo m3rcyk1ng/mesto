@@ -1,7 +1,7 @@
-.popup-edit__description {
+.popup__description {
     width: 358px;
     height: 27px;
-    margin: 0 auto 48px;
+    margin: 0 auto 33px;
     font-size: 14px;
     line-height: 17px;
     border: none;
@@ -10,9 +10,8 @@
 }
 
 @media screen and (max-width: 600px) {
-    .popup-edit__description {
+    .popup__description {
         width: 238px;
-        height: 27px;
         margin-bottom: 45px;
     }
 }

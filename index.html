@@ -10,7 +10,7 @@
 </head>
 <body class="page">
 <header class="header">
-    <img class="header__logo" title="" src="./images/header_logo.svg" alt="ЛоготипMesto">
+    <div class="header__logo"></div>
 </header>
 <main class="content">
     <section class="profile">
@@ -28,57 +28,45 @@
     </section>
     <section class="elements">
         <article class="element">
-            <div class="element__rectangle">
-                <img class="element__photo" src="./images/cards/abhaz.jpg" alt="Абхазия">
-                <div class="element__description">
-                    <h2 class="element__title">Абхазия</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
+            <img class="element__photo" src="./images/cards/abhaz.jpg" alt="Абхазия">
+            <div class="element__description">
+                <h2 class="element__title">Абхазия</h2>
+                <button class="element__like" type="button"></button>
             </div>
         </article>
         <article class="element">
-            <div class="element__rectangle">
-                <img class="element__photo" src="./images/cards/baikal.jpg" alt="Байкал">
-                <div class="element__description">
-                    <h2 class="element__title">Байкал</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
+            <img class="element__photo" src="./images/cards/baikal.jpg" alt="Байкал">
+            <div class="element__description">
+                <h2 class="element__title">Байкал</h2>
+                <button class="element__like" type="button"></button>
             </div>
         </article>
         <article class="element">
-            <div class="element__rectangle">
-                <img class="element__photo" src="./images/cards/mac.jpg" alt="МоёПризвание">
-                <div class="element__description">
-                    <h2 class="element__title">Я - веб-разработчик</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
+            <img class="element__photo" src="./images/cards/mac.jpg" alt="МоёПризвание">
+            <div class="element__description">
+                <h2 class="element__title">Я - веб-разработчик</h2>
+                <button class="element__like" type="button"></button>
             </div>
         </article>
         <article class="element">
-            <div class="element__rectangle">
-                <img class="element__photo" src="./images/cards/sibir.jpg" alt="Сибирь">
-                <div class="element__description">
-                    <h2 class="element__title">Сибирь</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
+            <img class="element__photo" src="./images/cards/sibir.jpg" alt="Сибирь">
+            <div class="element__description">
+                <h2 class="element__title">Сибирь</h2>
+                <button class="element__like" type="button"></button>
             </div>
         </article>
         <article class="element">
-            <div class="element__rectangle">
-                <img class="element__photo" src="./images/cards/sochi.jpg" alt="Сочи">
-                <div class="element__description">
-                    <h2 class="element__title">Сочи</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
+            <img class="element__photo" src="./images/cards/sochi.jpg" alt="Сочи">
+            <div class="element__description">
+                <h2 class="element__title">Сочи</h2>
+                <button class="element__like" type="button"></button>
             </div>
         </article>
         <article class="element">
-            <div class="element__rectangle">
-                <img class="element__photo" src="./images/cards/ural.jpg" alt="Урал">
-                <div class="element__description">
-                    <h2 class="element__title">Урал</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
+            <img class="element__photo" src="./images/cards/ural.jpg" alt="Урал">
+            <div class="element__description">
+                <h2 class="element__title">Урал</h2>
+                <button class="element__like" type="button"></button>
             </div>
         </article>
     </section>
@@ -86,15 +74,15 @@
 <footer class="footer">
     <p class="footer__copyright">&copy; 2021. Mesto Russia</p>
 </footer>
-<section class="popup-edit">
-    <form class="popup-edit__container">
-        <button class="popup-edit__button-close" type="reset"></button>
-        <h2 class="popup-edit__title">Редактировать профиль</h2>
-        <input class="popup-edit__name" placeholder="Имя" type="text" value="Жак-Ив Кусто">
-        <input class="popup-edit__description" placeholder="О себе" type="text" value="Исследователь океана">
-        <button class="popup-edit__submit" type="submit">Сохранить</button>
+<div class="popup">
+    <form class="popup__container" method="post" name="formCard">
+        <button class="popup__button-close" type="reset"></button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <input class="popup__name" placeholder="Имя" type="text" name="authorName">
+        <input class="popup__description" placeholder="О себе" type="text" name="authorDescription">
+        <button class="popup__submit" type="submit">Сохранить</button>
     </form>
-</section>
+</div>
 <script src="script/script.js"></script>
 </body>
 </html>

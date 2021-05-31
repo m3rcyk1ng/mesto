@@ -1,20 +1,20 @@
 let editButton = document.querySelector('.profile__button-edit');
-let popup = document.querySelector('.popup-edit');
-let closeButton = popup.querySelector('.popup-edit__button-close');
-let submitForm = popup.querySelector('.popup-edit__container');
+let popup = document.querySelector('.popup');
+let closeButton = popup.querySelector('.popup__button-close');
+let submitForm = popup.querySelector('.popup__container');
 let name = document.querySelector('.profile__name');
 let description = document.querySelector('.profile__description');
-let nameInput = popup.querySelector('.popup-edit__name');
-let descriptionInput = popup.querySelector('.popup-edit__description');
+let nameInput = popup.querySelector('.popup__name');
+let descriptionInput = popup.querySelector('.popup__description');
 
 function popupOpen() {
-   popup.classList.add('popup-edit_open');
+   popup.classList.add('popup_open');
    nameInput.value = name.textContent;
    descriptionInput.value = description.textContent;
 }
 
 function popupClose() {
-   popup.classList.remove('popup-edit_open');
+   popup.classList.remove('popup_open');
 }
 
 function formSubmitHandler(evt) {
