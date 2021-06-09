@@ -1,5 +1,6 @@
 .element {
     display: flex;
+    position: relative;
     width: 282px;
     height: 361px;
     flex-direction: column;

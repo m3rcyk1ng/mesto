@@ -1,4 +1,30 @@
 .element__photo {
-    width: 282px;
+    width: 100%;
+    min-width: 282px;
     height: 282px;
+    flex: 0 0 auto;
 }
+
+
+
+
+.element__img {
+    width: 100%;
+    min-width: 282px;
+    height: 282px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/*@media (max-width: 918px) {*/
+/*    .element__img {*/
+/*        min-width: 100px;*/
+/*    }*/
+/*}*/
+
+/*.element__img:hover {*/
+/*    opacity: 0.8;*/
+/*    cursor: pointer;*/
+/*    transition: opacity .3s ease;*/
+/*}*/
+
