@@ -31,7 +31,6 @@
 <footer class="footer">
     <p class="footer__copyright">&copy; 2021. Mesto Russia</p>
 </footer>
-
 <! Попап редактирования -->
 <div class="popup popup_type_edit">
     <form class="popup__container" method="post" name="formCard">
@@ -42,19 +41,17 @@
         <button class="popup__submit" type="submit">Сохранить</button>
     </form>
 </div>
-
 <! Попап для добавления новой карточки -->
 <div class="popup popup_type_add">
-    <form class="popup__container" method="post" name="formCard">
+    <form class="popup__container " method="post" name="formCard">
         <button class="popup__button-close" type="reset"></button>
         <h3 class="popup__title">Новое место</h3>
-        <input class="popup__name popup__input_type_title" placeholder="Название" type="text" name="CardTitle" required>
-        <input class="popup__add-card" placeholder="Ссылка на картинку" type="url" name="CardLink" required>
+        <input class="popup__name" placeholder="Название" type="text" name="CardTitle" required>
+        <input class="popup__link_input" placeholder="Ссылка на картинку" type="url" name="CardLink" required>
         <button class="popup__submit" type="submit">Создать</button>
     </form>
 </div>
-
-<! Тут будет попап открытой картинки блоком -->
+<! Попап открытой картинки блоком -->
 <div class="popup popup_type_image">
     <div class="popup__image-container">
         <button class="popup__button-close" type="reset"></button>
@@ -62,7 +59,6 @@
         <figcaption class="popup__image-text"></figcaption>
     </div>
 </div>
-
 <! Темплейт стандартной карточки -->
 <template class="element__template" id="card">
     <article class="element">
