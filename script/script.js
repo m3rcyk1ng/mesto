@@ -82,7 +82,7 @@ function formSubmitHandler(evt) {
 function formSubmitAddCard(evt) {
     evt.preventDefault();
     const titleInput = popupTypeAdd.querySelector('.popup__name');
-    const linkInput = popupTypeAdd.querySelector('.popup__link_input');
+    const linkInput = popupTypeAdd.querySelector('.popup__link');
     const addUserCard = createCard(titleInput.value, linkInput.value);
     elements.prepend(addUserCard);
     closeAddCardPopup();
