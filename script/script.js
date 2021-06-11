@@ -1,25 +1,33 @@
 const editButton = document.querySelector('.profile__button-edit');
 const addCardButton = document.querySelector('.profile__add-button');
+// Кнопки сохранить
+const submitFormEdit = document.querySelector('.popup__container');
+const submitFormAdd = document.querySelector('.popup__container');
 
 
-const popup = document.querySelector('.popup');
-const closeButton = document.querySelector('.popup__button-close');
-const submitForm = document.querySelector('.popup__container');
 const name = document.querySelector('.profile__name');
 const description = document.querySelector('.profile__description');
+
+const addCardDataTitle = document.querySelector('.popup__input_type_title');
+const addCardDataLink = document.querySelector('.popup__add-card');
 const nameInput = document.querySelector('.popup__name');
 const descriptionInput = document.querySelector('.popup__description');
 const elements = document.querySelector('.elements');
-
+// Открытие попапов через модификаторы
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupTypeAdd = document.querySelector('.popup_type_add');
 const popupTypeImg = document.querySelector('.popup_type_image');
+// Закрытие попапов
+const closeButtonTypeEdit = popupTypeEdit.querySelector('.popup__button-close');
+const closeButtonTypeAdd = popupTypeAdd.querySelector('.popup__button-close');
+const closeButtonTypeImg = popupTypeImg.querySelector('.popup__button-close');
 
+// ====================================================
 function popupOpen(popupType) {
     popupType.classList.add('popup_open');
 }
 
-// Функция открытия попапа редактирования
+// Функция открытия редактирования
 function openEditPopup() {
     nameInput.value = name.textContent;
     descriptionInput.value = description.textContent;
@@ -27,31 +35,54 @@ function openEditPopup() {
 }
 
 // Функция открытия изображения
-function openImagePopup(evt) {
-    const eventTargetImage = evt.target;
+function openImagePopup() {
     popupOpen(popupTypeImg);
 }
 
+// Функция открытия добавления
     function openAddCardPopup() {
     popupOpen(popupTypeAdd) // popupOpen (popupTypeAdd >>>>>> popupType (+popup_open);
     }
 
-    //Функция закрытия попапа
-    function popupClose() {
-    popup.classList.remove('popup_open');
-    }
+// ====================================================
 
+//Функция закрытия попапа
+function popupClose(popupType) {
+    popupType.classList.remove('popup_open');
+}
 
-    //Функция сохранения данных
+// Функция закрытия попапа редактирования
+function closeEditPopup() {
+    popupClose(popupTypeEdit);
+}
+
+// Функция закрытия попапа изображения
+function closeImagePopup() {
+    popupClose(popupTypeImg);
+}
+
+// Функция закрытия попапа добавления
+function closeAddCardPopup() {
+    popupClose(popupTypeAdd) // popupOpen (popupTypeAdd >>>>>> popupType (+popup_open);
+}
+
+// ====================================================
+    //Функция сохранения данных в попапе редактирования
     function formSubmitHandler(evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
     description.textContent = descriptionInput.value;
-    popupClose();
+    closeEditPopup();
     }
 
+//Функция сохранения данных в попапе добавления
+function formSubmitAddCard(evt) {
+    evt.preventDefault();
+    cardElement.prepend(addCardDataTitle, addCardDataLink);
+    closeAddCardPopup();
+}
 
-
+// ====================================================
 // Клонируем карточку через template ID и забираем весь контент у элемента
 const cardElement = document.querySelector('#card');
 //index - как value в кнопку удалить//
@@ -81,6 +112,17 @@ function createCard(cardData) {
     return cardContent;
 }
 
+// Функция отрисовки карточек
+function initializeCard() {
+    initialCards.forEach((elem) => {
+        const cardTemplate = createCard(elem);
+        elements.prepend(cardTemplate);
+    });
+}
+initializeCard();
+
+// ====================================================
+
 // Функция удаления
 function cardDelete(evt) {
     const eventTargetDelete = evt.target;
@@ -93,27 +135,23 @@ function cardLikeAddEvent(evt) {
     const eventTargetLike = evt.target;
     eventTargetLike.classList.toggle('element__like_active');
 }
-
-// Функция отрисовки карточек
-function initializeCard() {
-    initialCards.forEach((elem, index) => {
-        const cardTemplate = createCard(elem, index);
-        elements.prepend(cardTemplate);
-    });
-}
-initializeCard();
-
+// ====================================================
 
 
 //Слушатели для редактирования
 editButton.addEventListener('click', openEditPopup);
-closeButton.addEventListener('click', popupClose);
+// closeButton.addEventListener('click', popupClose);
 
-//Кнопка сохранить для попапа редактирования и сохранения
-submitForm.addEventListener('submit', formSubmitHandler);
+//Кнопка сохранить для попапа редактирования и создания новой карточки
+submitFormEdit.addEventListener('submit', formSubmitHandler);
+submitFormAdd.addEventListener('submit', formSubmitAddCard);
 
 //Слушатели для добавления карточек
 addCardButton.addEventListener('click', openAddCardPopup);
 
 
-//Слушатели для карточек с картинками
+
+//Слушатели закрытия
+closeButtonTypeEdit.addEventListener('click', closeEditPopup);
+closeButtonTypeAdd.addEventListener('click', closeAddCardPopup);
+closeButtonTypeImg.addEventListener('click', closeImagePopup);
