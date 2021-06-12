@@ -31,22 +31,22 @@
 <footer class="footer">
     <p class="footer__copyright">&copy; 2021. Mesto Russia</p>
 </footer>
-<!-- Попап открытой картинки блоком -->
+<!-- Попап редактирования -->
 <div class="popup popup_type_edit">
-    <form class="popup__container" method="post" name="formCard">
-        <button class="popup__button-close" type="reset"></button>
+    <form class="popup__container" method="post" name="editForm">
+        <button class="popup__button-close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__name" placeholder="Имя" type="text" name="authorName">
+        <input class="popup__name popup__name_type_name" placeholder="Имя" type="text" name="authorName">
         <input class="popup__description" placeholder="О себе" type="text" name="authorDescription">
         <button class="popup__submit" type="submit">Сохранить</button>
     </form>
 </div>
-<!-- Попап открытой картинки блоком -->
+<!-- Попап добавления карточки -->
 <div class="popup popup_type_add">
-    <form class="popup__container " method="post" name="formCard">
-        <button class="popup__button-close" type="reset"></button>
+    <form class="popup__container" method="post" name="createForm">
+        <button class="popup__button-close" type="button"></button>
         <h3 class="popup__title">Новое место</h3>
-        <input class="popup__name" placeholder="Название" type="text" name="CardTitle" required>
+        <input class="popup__name popup__name_type_title" placeholder="Название" type="text" name="CardTitle" required>
         <input class="popup__link" placeholder="Ссылка на картинку" type="url" name="CardLink" required>
         <button class="popup__submit" type="submit">Создать</button>
     </form>
@@ -54,13 +54,13 @@
 <!-- Попап открытой картинки блоком -->
 <div class="popup popup_type_image">
     <div class="popup__image-container">
-        <button class="popup__button-close" type="reset"></button>
-        <img class="popup__image" src=" ">
-        <figcaption class="popup__image-text"></figcaption>
+        <button class="popup__button-close" type="button"></button>
+        <img class="popup__image" src="#" alt="#">
+        <div class="popup__image-text"></div>
     </div>
 </div>
 <!-- Попап открытой картинки блоком -->
-<template class="element__template" id="card">
+<template class="element-template" id="card">
     <article class="element">
         <img class="element__photo">
         <button class="element__delete-icon" type="button" aria-label="Удалить"></button>

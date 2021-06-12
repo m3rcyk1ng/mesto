@@ -1,6 +1,7 @@
 // Кнопочки
 const editButton = document.querySelector('.profile__button-edit');
 const addCardButton = document.querySelector('.profile__add-button');
+const cardElement = document.querySelector('#card');
 // Присваивание модификаторов попапам для разграничения
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupTypeAdd = document.querySelector('.popup_type_add');
@@ -13,39 +14,40 @@ const closeButtonTypeImg = popupTypeImg.querySelector('.popup__button-close');
 const submitFormEdit = popupTypeEdit.querySelector('.popup__container');
 const submitFormAdd = popupTypeAdd.querySelector('.popup__container');
 // Для редактирования информации профиля
-const name = document.querySelector('.profile__name');
+const profileNameElement = document.querySelector('.profile__name');
 const description = document.querySelector('.profile__description');
 // Поля попапа
-const nameInput = document.querySelector('.popup__name');
+const inputName = document.querySelector('.popup__name_type_name');
+const inputTitle = popupTypeAdd.querySelector('.popup__name_type_title');
 const descriptionInput = document.querySelector('.popup__description');
 const elements = document.querySelector('.elements');
+// Раскрытые изображения
+const openLink = popupTypeImg.querySelector('.popup__image');
+const openFigcaption = popupTypeImg.querySelector('.popup__image-text');
 
 // ↓ Открытия ↓
-function popupOpen(popupType) {
+function openPopup(popupType) {
     popupType.classList.add('popup_open');
 }
 
 // Функция открытия редактирования
 function openEditPopup() {
-    nameInput.value = name.textContent;
+    inputName.value = profileNameElement.textContent;
     descriptionInput.value = description.textContent;
-    popupOpen(popupTypeEdit);
+    openPopup(popupTypeEdit);
 }
 
 // Функция открытия изображения
 function openImagePopup(name, link) {
-    const openLink = popupTypeImg.querySelector('.popup__image');
-    const openAlt = popupTypeImg.querySelector('.popup__image-text');
-    const openFigcaption = popupTypeImg.querySelector('.popup__image-text');
     openLink.src = link;
-    openAlt.alt = name;
+    openLink.alt = name;
     openFigcaption.textContent = name;
-    popupOpen(popupTypeImg);
+    openPopup(popupTypeImg);
 }
 
 // Функция открытия добавления
     function openAddCardPopup() {
-    popupOpen(popupTypeAdd);
+    openPopup(popupTypeAdd);
     }
 
 // ↓ Закрытия ↓
@@ -66,30 +68,29 @@ function closeImagePopup() {
 
 // Функция закрытия попапа добавления
 function closeAddCardPopup() {
-    popupClose(popupTypeAdd); // popupOpen (popupTypeAdd >>>>>> popupType (+popup_open);
+    popupClose(popupTypeAdd);
 }
 
 // ↓ Изменения на страницу ↓
 //Функция сохранения данных в попапе редактирования
-function formSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    name.textContent = nameInput.value;
+    profileNameElement.textContent = inputName.value;
     description.textContent = descriptionInput.value;
     closeEditPopup();
 }
 
 //Функция добавляет карточки пользователя
-function formSubmitAddCard(evt) {
+function addCardSubmitForm(evt) {
     evt.preventDefault();
-    const titleInput = popupTypeAdd.querySelector('.popup__name');
     const linkInput = popupTypeAdd.querySelector('.popup__link');
-    const addUserCard = createCard(titleInput.value, linkInput.value);
+    const addUserCard = createCard(inputTitle.value, linkInput.value);
     elements.prepend(addUserCard);
     closeAddCardPopup();
+    document.createForm.reset();
 }
 
 // Клонируем карточку через template ID и забираем весь контент у элемента
-const cardElement = document.querySelector('#card');
 function createCard(name, link) {
     const cardContent = cardElement.content.cloneNode(true);
     //Ищем картинку у карточки и меняем её содержимое
@@ -105,11 +106,10 @@ function createCard(name, link) {
     cardLike.addEventListener('click', cardLikeAddEvent);
     // Слушатель удаления
     const deleteButton = cardContent.querySelector('.element__delete-icon');
-    deleteButton.addEventListener('click', cardDelete);
+    deleteButton.addEventListener('click', deleteCard);
 
     // Слушатель картинки
-    const imageClick = cardContent.querySelector('.element__photo');
-    imageClick.addEventListener('click', () => {
+    cardPhoto.addEventListener('click', () => {
         openImagePopup(name, link);
     });
 
@@ -128,7 +128,7 @@ initializeCard();
 
 // ↓ Функциональные функции ↓
 // Функция удаления
-function cardDelete(evt) {
+function deleteCard(evt) {
     const eventTargetDelete = evt.target;
     const parentElement = eventTargetDelete.closest('.element');
     parentElement.remove();
@@ -144,8 +144,8 @@ function cardLikeAddEvent(evt) {
 // Слушатели для редактирования
 editButton.addEventListener('click', openEditPopup);
 //Кнопка сохранить для попапа редактирования и создания новой карточки
-submitFormEdit.addEventListener('submit', formSubmitHandler);
-submitFormAdd.addEventListener('submit', formSubmitAddCard);
+submitFormEdit.addEventListener('submit', handleProfileFormSubmit);
+submitFormAdd.addEventListener('submit', addCardSubmitForm);
 //Слушатели для добавления карточек
 addCardButton.addEventListener('click', openAddCardPopup);
 //Слушатели закрытия
