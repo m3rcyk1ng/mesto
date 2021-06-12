@@ -6,6 +6,7 @@
     border: none;
     align-self: center;
     margin: 0 20px 0 0;
+    outline: none;
 }
 
 .element__like:hover {
