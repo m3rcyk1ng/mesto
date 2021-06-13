@@ -13,15 +13,16 @@ const closeButtonTypeImg = popupTypeImg.querySelector('.popup__button-close');
 // Кнопки сохранить
 const submitFormEdit = popupTypeEdit.querySelector('.popup__container');
 const submitFormAdd = popupTypeAdd.querySelector('.popup__container');
-// Для редактирования информации профиля
+//  Профиль на мейнпейдж
 const profileNameElement = document.querySelector('.profile__name');
 const description = document.querySelector('.profile__description');
 // Поля попапа
-const inputName = document.querySelector('.popup__name_type_name');
-const inputTitle = popupTypeAdd.querySelector('.popup__name_type_title');
-const descriptionInput = document.querySelector('.popup__description');
+const inputName = document.querySelector('.popup__input_type_name');
+const inputTitle = popupTypeAdd.querySelector('.popup__input_type_title');
+const descriptionInput = document.querySelector('.popup__input_type_description');
 const elements = document.querySelector('.elements');
 // Раскрытые изображения
+const inputLink = popupTypeAdd.querySelector('.popup__input_type_link');
 const openLink = popupTypeImg.querySelector('.popup__image');
 const openFigcaption = popupTypeImg.querySelector('.popup__image-text');
 
@@ -52,23 +53,23 @@ function openImagePopup(name, link) {
 
 // ↓ Закрытия ↓
 //Функция закрытия попапа
-function popupClose(popupType) {
+function closePopup(popupType) {
     popupType.classList.remove('popup_open');
 }
 
 // Функция закрытия попапа редактирования
 function closeEditPopup() {
-    popupClose(popupTypeEdit);
+    closePopup(popupTypeEdit);
 }
 
 // Функция закрытия попапа изображения
 function closeImagePopup() {
-    popupClose(popupTypeImg);
+    closePopup(popupTypeImg);
 }
 
 // Функция закрытия попапа добавления
 function closeAddCardPopup() {
-    popupClose(popupTypeAdd);
+    closePopup(popupTypeAdd);
 }
 
 // ↓ Изменения на страницу ↓
@@ -83,8 +84,7 @@ function handleProfileFormSubmit(evt) {
 //Функция добавляет карточки пользователя
 function addCardSubmitForm(evt) {
     evt.preventDefault();
-    const linkInput = popupTypeAdd.querySelector('.popup__link');
-    const addUserCard = createCard(inputTitle.value, linkInput.value);
+    const addUserCard = createCard(inputTitle.value, inputLink.value);
     elements.prepend(addUserCard);
     closeAddCardPopup();
     document.createForm.reset();

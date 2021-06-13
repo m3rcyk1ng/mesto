@@ -36,8 +36,8 @@
     <form class="popup__container" method="post" name="editForm">
         <button class="popup__button-close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__name popup__name_type_name" placeholder="Имя" type="text" name="authorName">
-        <input class="popup__description" placeholder="О себе" type="text" name="authorDescription">
+        <input class="popup__input popup__input_type_name" placeholder="Имя" type="text" name="authorName">
+        <input class="popup__input popup__input_type_description" placeholder="О себе" type="text" name="authorDescription">
         <button class="popup__submit" type="submit">Сохранить</button>
     </form>
 </div>
@@ -46,8 +46,8 @@
     <form class="popup__container" method="post" name="createForm">
         <button class="popup__button-close" type="button"></button>
         <h3 class="popup__title">Новое место</h3>
-        <input class="popup__name popup__name_type_title" placeholder="Название" type="text" name="CardTitle" required>
-        <input class="popup__link" placeholder="Ссылка на картинку" type="url" name="CardLink" required>
+        <input class="popup__input popup__input_type_title" placeholder="Название" type="text" name="CardTitle" required>
+        <input class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" type="url" name="CardLink" required>
         <button class="popup__submit" type="submit">Создать</button>
     </form>
 </div>
@@ -56,10 +56,10 @@
     <div class="popup__image-container">
         <button class="popup__button-close" type="button"></button>
         <img class="popup__image" src="#" alt="#">
-        <div class="popup__image-text"></div>
+        <p class="popup__image-text"></p>
     </div>
 </div>
-<!-- Попап открытой картинки блоком -->
+<!-- Темплейт для карточек -->
 <template class="element-template" id="card">
     <article class="element">
         <img class="element__photo">
