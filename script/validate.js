@@ -46,11 +46,11 @@ function checkFormValidity(form, validationObj, inputs) {
 // Функции отключения и включения кнопки "сохранить"
 function disableSubmit(button, validationObj) {
     button.classList.add(validationObj.inactiveButtonClass);
-    button.setAttribute('disabled');
+    button.setAttribute('disabled', 'disabled');
 }
 function enableSubmit(button, validationObj) {
     button.classList.remove(validationObj.inactiveButtonClass);
-    button.removeAttribute('disabled');
+    button.removeAttribute('disabled', 'disabled');
 }
 
 // Функция проверяет валидность одного конкретного поля и, в зависимости от результата, прячет/показывает строку ошибки
@@ -93,5 +93,5 @@ function formState(form, validationObj) {
 }
 
 //Слушатели валидности внутри попапов при открытии
-editButton.addEventListener('click', () => formState(document.form.editForm, validationObj));
-addCardButton.addEventListener('click', () => formState(document.form.createForm, validationObj));
+editButton.addEventListener('click', () => formState(document.forms.editForm, validationObj));
+addCardButton.addEventListener('click', () => formState(document.forms.createForm, validationObj));
