@@ -4,5 +4,5 @@
     border: 1px solid black;
     opacity: .2;
     cursor: default;
-    transition: none;
+    transition: 1s ease 0s;
 }

@@ -53,8 +53,7 @@ function enableSubmit(button, validationObj) {
     button.removeAttribute('disabled', 'disabled');
 }
 
-// Функция проверяет валидность одного конкретного поля и, в зависимости от результата, прячет/показывает строку ошибки
-// и меняет стиль инпута (подчеркивает красным)
+// Функция проверяет валидность поля и работает со строкой ошибки
 function checkInputValidity(input, validationObj) {
     const errorString = getErrorString(input);
     errorString.textContent = input.validationMessage;
@@ -64,8 +63,6 @@ function checkInputValidity(input, validationObj) {
         hideInputError(input, errorString, validationObj);
     }
 }
-
-// ===================================================================================
 
 // Функция получения ошибки
 function getErrorString(input) {
