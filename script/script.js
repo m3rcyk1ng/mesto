@@ -6,10 +6,6 @@ const cardElement = document.querySelector('#card');
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupTypeAdd = document.querySelector('.popup_type_add');
 const popupTypeImg = document.querySelector('.popup_type_image');
-// Закрытие попапов
-const closeButtonTypeEdit = popupTypeEdit.querySelector('.popup__button-close');
-const closeButtonTypeAdd = popupTypeAdd.querySelector('.popup__button-close');
-const closeButtonTypeImg = popupTypeImg.querySelector('.popup__button-close');
 // Кнопки сохранить
 const submitFormEdit = popupTypeEdit.querySelector('.popup__container');
 const submitFormAdd = popupTypeAdd.querySelector('.popup__container');
@@ -28,6 +24,9 @@ const openFigcaption = popupTypeImg.querySelector('.popup__image-text');
 
 // ↓ Открытия ↓
 function openPopup(popupType) {
+    //Добавление слушателей
+    document.addEventListener('keydown', pressedEsc);
+    popupType.addEventListener('click', closeClick);
     popupType.classList.add('popup_open');
 }
 
@@ -49,11 +48,15 @@ function openImagePopup(name, link) {
 // Функция открытия добавления
     function openAddCardPopup() {
     openPopup(popupTypeAdd);
+    document.createForm.reset();
     }
 
 // ↓ Закрытия ↓
 //Функция закрытия попапа
 function closePopup(popupType) {
+    //Удаление слушателей
+    document.removeEventListener('keydown', pressedEsc);
+    popupType.removeEventListener('click', closeClick);
     popupType.classList.remove('popup_open');
 }
 
@@ -87,7 +90,14 @@ function addCardSubmitForm(evt) {
     const addUserCard = createCard(inputTitle.value, inputLink.value);
     elements.prepend(addUserCard);
     closeAddCardPopup();
-    document.createForm.reset();
+}
+
+//Функция закрытия попапа на ESC
+function pressedEsc(evt) {
+    const activePopup = document.querySelector('.popup_open');
+    if (evt.key === 'Escape') {
+        closePopup(activePopup);
+    }
 }
 
 // Клонируем карточку через template ID и забираем весь контент у элемента
@@ -140,15 +150,18 @@ function cardLikeAddEvent(evt) {
     eventTargetLike.classList.toggle('element__like_active');
 }
 
+// Функция закрытия через клик и оверлей
+function closeClick(evt) {
+    if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__button-close')) {
+        closePopup(evt.currentTarget);
+    }
+}
+
 // ↓ Слушатели ↓
 // Слушатели для редактирования
 editButton.addEventListener('click', openEditPopup);
+//Слушатели для добавления карточек
+addCardButton.addEventListener('click', openAddCardPopup);
 //Кнопка сохранить для попапа редактирования и создания новой карточки
 submitFormEdit.addEventListener('submit', handleProfileFormSubmit);
 submitFormAdd.addEventListener('submit', addCardSubmitForm);
-//Слушатели для добавления карточек
-addCardButton.addEventListener('click', openAddCardPopup);
-//Слушатели закрытия
-closeButtonTypeEdit.addEventListener('click', closeEditPopup);
-closeButtonTypeAdd.addEventListener('click', closeAddCardPopup);
-closeButtonTypeImg.addEventListener('click', closeImagePopup);
