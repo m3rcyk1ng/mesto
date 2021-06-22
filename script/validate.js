@@ -15,12 +15,12 @@ enableValidation(validationObj);
 function enableValidation(validationObj) {
     const allForms = Array.from(document.querySelectorAll(validationObj.formSelector));
     allForms.forEach(form => {
-        validateFormItem(form, validationObj);
+        setEventListeners(form, validationObj);
     });
 }
 
 // Обработчик на все инпуты
-function validateFormItem(form, validationObj) {
+function setEventListeners(form, validationObj) {
     const inputs = allInputs(form, validationObj);
     form.addEventListener('input', () => checkFormValidity(form, validationObj, inputs));
     inputs.forEach(input => {
@@ -80,7 +80,7 @@ function hideInputError(input, wrongString, validationObj) {
 }
 
 // Сверение необходимого при открытии попапов и установка нужного значения кнопки сохранить
-function formState(form, validationObj) {
+function checkFormState(form, validationObj) {
     const inputs = allInputs(form, validationObj);
     checkFormValidity(form, validationObj, inputs);
     inputs.forEach(input => {
@@ -90,5 +90,5 @@ function formState(form, validationObj) {
 }
 
 //Слушатели валидности внутри попапов при открытии
-editButton.addEventListener('click', () => formState(document.forms.editForm, validationObj));
-addCardButton.addEventListener('click', () => formState(document.forms.createForm, validationObj));
+editButton.addEventListener('click', () => checkFormState(document.forms.editForm, validationObj));
+addCardButton.addEventListener('click', () => checkFormState(document.forms.createForm, validationObj));

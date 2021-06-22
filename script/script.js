@@ -20,7 +20,7 @@ const elements = document.querySelector('.elements');
 // Раскрытые изображения
 const inputLink = popupTypeAdd.querySelector('.popup__input_type_link');
 const openLink = popupTypeImg.querySelector('.popup__image');
-const openFigcaption = popupTypeImg.querySelector('.popup__image-text');
+const openFigCaption = popupTypeImg.querySelector('.popup__image-text');
 
 // ↓ Открытия ↓
 function openPopup(popupType) {
@@ -41,7 +41,7 @@ function openEditPopup() {
 function openImagePopup(name, link) {
     openLink.src = link;
     openLink.alt = name;
-    openFigcaption.textContent = name;
+    openFigCaption.textContent = name;
     openPopup(popupTypeImg);
 }
 
@@ -87,8 +87,7 @@ function handleProfileFormSubmit(evt) {
 //Функция добавляет карточки пользователя
 function addCardSubmitForm(evt) {
     evt.preventDefault();
-    const addUserCard = createCard(inputTitle.value, inputLink.value);
-    elements.prepend(addUserCard);
+    renderCard(inputTitle.value, inputLink.value);
     closeAddCardPopup();
 }
 
@@ -113,7 +112,7 @@ function createCard(name, link) {
 
     // Слушатель лайка
     const cardLike = cardContent.querySelector('.element__like');
-    cardLike.addEventListener('click', cardLikeAddEvent);
+    cardLike.addEventListener('click', handleLikeClick);
     // Слушатель удаления
     const deleteButton = cardContent.querySelector('.element__delete-icon');
     deleteButton.addEventListener('click', deleteCard);
@@ -126,11 +125,16 @@ function createCard(name, link) {
     return cardContent;
 }
 
+
+function renderCard(name, link) {
+    const cardTemplate = createCard(name, link);
+    elements.prepend(cardTemplate);
+}
+
 // Функция отрисовки карточек
 function initializeCard() {
     initialCards.forEach((elem) => {
-        const cardTemplate = createCard(elem.name, elem.link);
-        elements.prepend(cardTemplate);
+        renderCard(elem.name, elem.link);
     });
 }
 
@@ -145,7 +149,7 @@ function deleteCard(evt) {
 }
 
 // Функция лайка
-function cardLikeAddEvent(evt) {
+function handleLikeClick(evt) {
     const eventTargetLike = evt.target;
     eventTargetLike.classList.toggle('element__like_active');
 }
