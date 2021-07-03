@@ -38,18 +38,18 @@ function openEditPopup() {
 }
 
 // Функция открытия изображения
-function openImagePopup(name, link) {
-    openLink.src = link;
-    openLink.alt = name;
-    openFigCaption.textContent = name;
-    openPopup(popupTypeImg);
-}
+// function openImagePopup(name, link) {
+//     openLink.src = link;
+//     openLink.alt = name;
+//     openFigCaption.textContent = name;
+//     openPopup(popupTypeImg);
+// }
 
 // Функция открытия добавления
-    function openAddCardPopup() {
+function openAddCardPopup() {
     openPopup(popupTypeAdd);
     document.createForm.reset();
-    }
+}
 
 // ↓ Закрытия ↓
 //Функция закрытия попапа
@@ -87,7 +87,14 @@ function handleProfileFormSubmit(evt) {
 //Функция добавляет карточки пользователя
 function addCardSubmitForm(evt) {
     evt.preventDefault();
-    renderCard(inputTitle.value, inputLink.value);
+    const data = {
+        name: inputTitle.value,
+        link: inputLink.value
+    }
+    const newCard = new Card (data, '.element-template');
+    const cardElement = newCard.generateCard();
+    // Добавляем в DOM
+    document.querySelector('.elements').prepend(cardElement);
     closeAddCardPopup();
 }
 
@@ -99,60 +106,72 @@ function pressedEsc(evt) {
     }
 }
 
-// Клонируем карточку через template ID и забираем весь контент у элемента
-function createCard(name, link) {
-    const cardContent = cardElement.content.cloneNode(true);
-    //Ищем картинку у карточки и меняем её содержимое
-    const cardPhoto = cardContent.querySelector('.element__photo');
-    cardPhoto.src = link;
-    cardPhoto.alt = name;
-    //Ищем заголовок у карточки и меняем её содержимое
-    const cardTitle = cardContent.querySelector('.element__title');
-    cardTitle.textContent = name;
+// // Клонируем карточку через template ID и забираем весь контент у элемента
+// function createCard(name, link) {
+//     const cardContent = cardElement.content.cloneNode(true);
+//     //Ищем картинку у карточки и меняем её содержимое
+//     const cardPhoto = cardContent.querySelector('.element__photo');
+//     cardPhoto.src = link;
+//     cardPhoto.alt = name;
+//     //Ищем заголовок у карточки и меняем её содержимое
+//     const cardTitle = cardContent.querySelector('.element__title');
+//     cardTitle.textContent = name;
+//
+//     // Слушатель лайка
+//     // const cardLike = cardContent.querySelector('.element__like');
+//     // cardLike.addEventListener('click', handleLikeClick);
+//     // Слушатель удаления
+//     const deleteButton = cardContent.querySelector('.element__delete-icon');
+//     deleteButton.addEventListener('click', deleteCard);
+//
+//     // Слушатель картинки
+//     cardPhoto.addEventListener('click', () => {
+//         openImagePopup(name, link);
+//     });
+//
+//     return cardContent;
+// }
+//
+//
+// function renderCard(name, link) {
+//     const cardTemplate = createCard(name, link);
+//     elements.prepend(cardTemplate);
+// }
 
-    // Слушатель лайка
-    const cardLike = cardContent.querySelector('.element__like');
-    cardLike.addEventListener('click', handleLikeClick);
-    // Слушатель удаления
-    const deleteButton = cardContent.querySelector('.element__delete-icon');
-    deleteButton.addEventListener('click', deleteCard);
+// // Функция отрисовки карточек
+// function initializeCard() {
+//     initialCards.forEach((elem) => {
+//         renderCard(elem.name, elem.link);
+//     });
+// }
 
-    // Слушатель картинки
-    cardPhoto.addEventListener('click', () => {
-        openImagePopup(name, link);
-    });
-
-    return cardContent;
-}
-
-
-function renderCard(name, link) {
-    const cardTemplate = createCard(name, link);
-    elements.prepend(cardTemplate);
-}
-
-// Функция отрисовки карточек
-function initializeCard() {
-    initialCards.forEach((elem) => {
-        renderCard(elem.name, elem.link);
-    });
-}
-
-initializeCard();
-
+// initializeCard();
+////////////////
 // ↓ Функциональные функции ↓
-// Функция удаления
-function deleteCard(evt) {
-    const eventTargetDelete = evt.target;
-    const parentElement = eventTargetDelete.closest('.element');
-    parentElement.remove();
-}
+// // Функция удаления
+// function deleteCard(evt) {
+//     const eventTargetDelete = evt.target;
+//     const parentElement = eventTargetDelete.closest('.element');
+//     parentElement.remove();
+// }
+
+initialCards.forEach((item) => {
+    // Создадим экземпляр карточки
+    const card = new Card(item, '.element-template');
+    // Создаём карточку и возвращаем наружу
+    const cardElement = card.generateCard();
+
+    // Добавляем в DOM
+    document.querySelector('.elements').prepend(cardElement);
+});
+
+
 
 // Функция лайка
-function handleLikeClick(evt) {
-    const eventTargetLike = evt.target;
-    eventTargetLike.classList.toggle('element__like_active');
-}
+// function handleLikeClick(evt) {
+//     const eventTargetLike = evt.target;
+//     eventTargetLike.classList.toggle('element__like_active');
+// }
 
 // Функция закрытия через клик и оверлей
 function closeClick(evt) {
