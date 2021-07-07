@@ -1,3 +1,7 @@
+import FormValidator from "./FormValidator.js";
+import Card from "./Card.js";
+import initialCards from "./initialCards.js";
+
 // Кнопочки
 const editButton = document.querySelector('.profile__button-edit');
 const addCardButton = document.querySelector('.profile__add-button');
@@ -208,5 +212,5 @@ submitFormEdit.addEventListener('submit', handleProfileFormSubmit);
 submitFormAdd.addEventListener('submit', addCardSubmitForm);
 
 // //Слушатели валидности внутри попапов при открытии
-editButton.addEventListener('click', () => _checkFormState(document.forms.editForm, validationObj));
-addCardButton.addEventListener('click', () => _checkFormState(document.forms.createForm, validationObj));
+editButton.addEventListener('click', () => validateFormEdit.checkFormState());
+addCardButton.addEventListener('click', () => validateFormAdd.checkFormState());
