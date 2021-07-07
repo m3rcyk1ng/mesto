@@ -22,6 +22,17 @@ const inputLink = popupTypeAdd.querySelector('.popup__input_type_link');
 const openLink = popupTypeImg.querySelector('.popup__image');
 const openFigCaption = popupTypeImg.querySelector('.popup__image-text');
 
+const validationObj = {
+    formSelector: '.popup__container',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_disabled', // +
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error',
+    errorMessageClass: 'popup__input-error_visible'
+};
+
+
 // ↓ Открытия ↓
 function openPopup(popupType) {
     //Добавление слушателей
@@ -155,6 +166,13 @@ function pressedEsc(evt) {
 //     parentElement.remove();
 // }
 
+const validateFormEdit = new FormValidator(validationObj, submitFormEdit);
+validateFormEdit.enableValidation();
+
+const validateFormAdd = new FormValidator(validationObj, submitFormAdd);
+validateFormAdd.enableValidation();
+
+
 initialCards.forEach((item) => {
     // Создадим экземпляр карточки
     const card = new Card(item, '.element-template');
@@ -188,3 +206,7 @@ addCardButton.addEventListener('click', openAddCardPopup);
 //Кнопка сохранить для попапа редактирования и создания новой карточки
 submitFormEdit.addEventListener('submit', handleProfileFormSubmit);
 submitFormAdd.addEventListener('submit', addCardSubmitForm);
+
+// //Слушатели валидности внутри попапов при открытии
+editButton.addEventListener('click', () => _checkFormState(document.forms.editForm, validationObj));
+addCardButton.addEventListener('click', () => _checkFormState(document.forms.createForm, validationObj));
