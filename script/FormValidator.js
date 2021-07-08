@@ -13,21 +13,20 @@ class FormValidator {
     enableValidation = () => {
         this._setEventListeners();
     }
-//
-// Обработчик на все инпуты
 
+// Обработчик на все инпуты
     _setEventListeners = () => {
         this._form.addEventListener('input', () => {
             this._checkFormValidity();
         });
         this._allInputs.forEach(input => {
             input.addEventListener('input', () => {
-                this._checkInputValidity();
+                this._checkInputValidity(input);
             });
         });
     }
 
-// // Проверка на валидность и изменение состояния кнопки
+// Проверка на валидность и изменение состояния кнопки
     _checkFormValidity = () => {
         if (this._allInputs.some(input => !input.validity.valid)) {
             this._disableSubmit();
@@ -35,8 +34,7 @@ class FormValidator {
             this._enableSubmit();
         }
     }
-
-    // Функции отключения и включения кнопки "сохранить"
+// Функции отключения и включения кнопки "сохранить"
     _disableSubmit = () => {
         this._button.classList.add(this._inactiveButtonClass);
         this._button.setAttribute('disabled', 'disabled');
