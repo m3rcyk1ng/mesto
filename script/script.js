@@ -58,6 +58,12 @@ function openAddCardPopup() {
     document.createForm.reset();
 }
 
+function handleCardClick(name, link) {
+    openLink.src = link;
+    openFigCaption.alt = name;
+    openPopup(popupTypeImg);
+}
+
 // ↓ Закрытия ↓
 //Функция закрытия попапа
 function closePopup(popupType) {
@@ -91,6 +97,8 @@ function handleProfileFormSubmit(evt) {
     closeEditPopup();
 }
 
+// ГДЕ-ТО ЗДЕСЬ ДОЛЖНА БЫТЬ ФУНКЦИЯ CREATECARD?!
+// function createCard() {}
 //Функция добавляет карточки пользователя
 function addCardSubmitForm(evt) {
     evt.preventDefault();
@@ -98,17 +106,17 @@ function addCardSubmitForm(evt) {
         name: inputTitle.value,
         link: inputLink.value
     }
-    const newCard = new Card (data, '.element-template');
+    const newCard = new Card(data, '.element-template', handleCardClick);
     const cardElement = newCard.generateCard();
     // Добавляем в DOM
-    document.querySelector('.elements').prepend(cardElement);
+    elements.prepend(cardElement);
     closeAddCardPopup();
 }
 
 //Функция закрытия попапа на ESC
 function pressedEsc(evt) {
-    const activePopup = document.querySelector('.popup_open');
     if (evt.key === 'Escape') {
+        const activePopup = document.querySelector('.popup_open');
         closePopup(activePopup);
     }
 }
@@ -127,7 +135,7 @@ initialCards.forEach((item) => {
     const cardElement = card.generateCard();
 
     // Добавляем в DOM
-    document.querySelector('.elements').prepend(cardElement);
+    elements.prepend(cardElement);
 });
 
 // Функция закрытия через клик и оверлей
@@ -138,14 +146,16 @@ function closeClick(evt) {
 }
 
 // ↓ Слушатели ↓
-// Слушатели для редактирования
-editButton.addEventListener('click', openEditPopup);
-//Слушатели для добавления карточек
-addCardButton.addEventListener('click', openAddCardPopup);
 //Кнопка сохранить для попапа редактирования и создания новой карточки
 submitFormEdit.addEventListener('submit', handleProfileFormSubmit);
 submitFormAdd.addEventListener('submit', addCardSubmitForm);
 
-// //Слушатели валидности внутри попапов при открытии
-editButton.addEventListener('click', () => validateFormEdit.checkFormState());
-addCardButton.addEventListener('click', () => validateFormAdd.checkFormState());
+// Слушатели валидности внутри попапов при открытии
+editButton.addEventListener('click', () => {
+    openEditPopup();
+    validateFormEdit.checkFormState()
+});
+addCardButton.addEventListener('click', () => {
+    openAddCardPopup();
+    validateFormAdd.checkFormState()
+});
