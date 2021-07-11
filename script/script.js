@@ -107,7 +107,6 @@ function addCardSubmitForm(evt) {
         name: inputTitle.value,
         link: inputLink.value
     }
-    // const newCard = new Card(data, '.element-template', handleCardClick);
     const newCard = createCard(data);
     const cardElement = newCard.generateCard();
     // Добавляем в DOM
