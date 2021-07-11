@@ -60,7 +60,7 @@ function openAddCardPopup() {
 
 function handleCardClick(name, link) {
     openLink.src = link;
-    openFigCaption.alt = name;
+    openFigCaption.textContent = name;
     openPopup(popupTypeImg);
 }
 
@@ -97,8 +97,9 @@ function handleProfileFormSubmit(evt) {
     closeEditPopup();
 }
 
-// ГДЕ-ТО ЗДЕСЬ ДОЛЖНА БЫТЬ ФУНКЦИЯ CREATECARD?!
-// function createCard() {}
+function createCard(data) {
+    return new Card(data, '.element-template', handleCardClick);
+}
 //Функция добавляет карточки пользователя
 function addCardSubmitForm(evt) {
     evt.preventDefault();
@@ -106,7 +107,8 @@ function addCardSubmitForm(evt) {
         name: inputTitle.value,
         link: inputLink.value
     }
-    const newCard = new Card(data, '.element-template', handleCardClick);
+    // const newCard = new Card(data, '.element-template', handleCardClick);
+    const newCard = createCard(data);
     const cardElement = newCard.generateCard();
     // Добавляем в DOM
     elements.prepend(cardElement);
@@ -130,7 +132,7 @@ validateFormAdd.enableValidation();
 
 initialCards.forEach((item) => {
     // Создадим экземпляр карточки
-    const card = new Card(item, '.element-template');
+    const card = createCard(item);
     // Создаём карточку и возвращаем наружу
     const cardElement = card.generateCard();
 

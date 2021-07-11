@@ -37,6 +37,7 @@ class Card {
     _deleteMePlease() {
         this._element.querySelector('.element__delete-icon').closest('.element').remove();
     }
+
     _setEventListeners() {
         this._like.addEventListener('click', () => {
             this._likeMePlease();
