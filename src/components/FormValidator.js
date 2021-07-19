@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
     constructor(validationObj, form) {
         this._form = form;
         this._submitButtonSelector = validationObj.submitButtonSelector;
@@ -80,5 +80,3 @@ class FormValidator {
             this._hideInputError(input, wrongString); // Очистка на всякий случайно от сохранившихся ошибок
         });
     }}
-
-    export default FormValidator;

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d4541d5-7594-4098-9ef6-02c9330d961e" name="Default Changelist" comment="feat: переделать структуру">
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+    <list default="true" id="4d4541d5-7594-4098-9ef6-02c9330d961e" name="Default Changelist" comment="feat: начать писать webpack">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormValidator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Section.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
@@ -76,7 +77,8 @@
       <workItem from="1626639128956" duration="1001000" />
       <workItem from="1626642219749" duration="162000" />
       <workItem from="1626644030200" duration="7415000" />
-      <workItem from="1626681465839" duration="3851000" />
+      <workItem from="1626681465839" duration="4129000" />
+      <workItem from="1626722841965" duration="4147000" />
     </task>
     <task id="LOCAL-00001" summary="feat: переделать структуру">
       <created>1626639838521</created>
@@ -85,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626639838521</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: начать писать webpack">
+      <created>1626688049716</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1626688049716</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +114,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: переделать структуру" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: переделать структуру" />
+    <MESSAGE value="feat: начать писать webpack" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: начать писать webpack" />
   </component>
 </project>

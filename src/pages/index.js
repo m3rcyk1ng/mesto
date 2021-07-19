@@ -1,41 +1,8 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
-import {initialCards} from "../utils/constants.js";
-
-// Кнопочки
-const editButton = document.querySelector('.profile__button-edit');
-const addCardButton = document.querySelector('.profile__add-button');
-const cardElement = document.querySelector('#card');
-// Присваивание модификаторов попапам для разграничения
-const popupTypeEdit = document.querySelector('.popup_type_edit');
-const popupTypeAdd = document.querySelector('.popup_type_add');
-const popupTypeImg = document.querySelector('.popup_type_image');
-// Кнопки сохранить
-const submitFormEdit = popupTypeEdit.querySelector('.popup__container');
-const submitFormAdd = popupTypeAdd.querySelector('.popup__container');
-//  Профиль на мейнпейдж
-const profileNameElement = document.querySelector('.profile__name');
-const description = document.querySelector('.profile__description');
-// Поля попапа
-const inputName = document.querySelector('.popup__input_type_name');
-const inputTitle = popupTypeAdd.querySelector('.popup__input_type_title');
-const descriptionInput = document.querySelector('.popup__input_type_description');
-const elements = document.querySelector('.elements');
-// Раскрытые изображения
-const inputLink = popupTypeAdd.querySelector('.popup__input_type_link');
-const openLink = popupTypeImg.querySelector('.popup__image');
-const openFigCaption = popupTypeImg.querySelector('.popup__image-text');
-
-const validationObj = {
-    formSelector: '.popup__container',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'popup__submit_disabled', // +
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error',
-    errorMessageClass: 'popup__input-error_visible'
-};
-
+import Section from "../components/Section.js";
+import {initialCards, validationObj, editButton, addCardButton, cardElement, popupTypeEdit, popupTypeAdd, popupTypeImg, submitFormEdit, submitFormAdd, profileNameElement,
+    description, inputName, inputTitle, descriptionInput, elements, elementsSelector, inputLink, openLink, openFigCaption} from "../utils/constants.js";
 
 // ↓ Открытия ↓
 function openPopup(popupType) {
@@ -128,16 +95,17 @@ validateFormEdit.enableValidation();
 const validateFormAdd = new FormValidator(validationObj, submitFormAdd);
 validateFormAdd.enableValidation();
 
-
-initialCards.forEach((item) => {
-    // Создадим экземпляр карточки
-    const card = createCard(item);
-    // Создаём карточку и возвращаем наружу
-    const cardElement = card.generateCard();
-
-    // Добавляем в DOM
-    elements.prepend(cardElement);
-});
+const renderDefaultCards = new Section(
+    {
+        items: initialCards,
+        renderer: (item) => {
+            const card = createCard(item);
+            const cardElement = card.generateCard();
+            renderDefaultCards.addItem(cardElement);
+        }
+    },
+    elementsSelector);
+renderDefaultCards.renderItems();
 
 // Функция закрытия через клик и оверлей
 function closeClick(evt) {
