@@ -1,8 +1,10 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+
 import {initialCards, validationObj, editButton, addCardButton, cardElement, popupTypeEdit, popupTypeAdd, popupTypeImg, submitFormEdit, submitFormAdd, profileNameElement,
-    description, inputName, inputTitle, descriptionInput, elements, elementsSelector, inputLink, openLink, openFigCaption} from "../utils/constants.js";
+    description, inputName, inputTitle, descriptionInput, elements, elementsSelector, userNameSelector, userInfoSelector, inputLink, openLink, openFigCaption} from "../utils/constants.js";
 
 // ↓ Открытия ↓
 function openPopup(popupType) {
@@ -12,12 +14,25 @@ function openPopup(popupType) {
     popupType.classList.add('popup_open');
 }
 
+const userInfo = new UserInfo({userNameSelector, userInfoSelector});
+
+
 // Функция открытия редактирования
 function openEditPopup() {
-    inputName.value = profileNameElement.textContent;
-    descriptionInput.value = description.textContent;
+    const userData = userInfo.getUserInfo();
+    inputName.value = userData.name;
+    descriptionInput.value = userData.info;
     openPopup(popupTypeEdit);
 }
+
+// ↓ Изменения на страницу ↓
+//Функция сохранения данных в попапе редактирования
+function handleProfileFormSubmit(evt) {
+    evt.preventDefault();
+    userInfo.setUserInfo(inputName.value, descriptionInput.value);
+    closeEditPopup();
+}
+
 
 // Функция открытия добавления
 function openAddCardPopup() {
@@ -55,31 +70,11 @@ function closeAddCardPopup() {
     closePopup(popupTypeAdd);
 }
 
-// ↓ Изменения на страницу ↓
-//Функция сохранения данных в попапе редактирования
-function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-    profileNameElement.textContent = inputName.value;
-    description.textContent = descriptionInput.value;
-    closeEditPopup();
-}
 
 function createCard(data) {
     return new Card(data, '.element-template', handleCardClick);
 }
-//Функция добавляет карточки пользователя
-function addCardSubmitForm(evt) {
-    evt.preventDefault();
-    const data = {
-        name: inputTitle.value,
-        link: inputLink.value
-    }
-    const newCard = createCard(data);
-    const cardElement = newCard.generateCard();
-    // Добавляем в DOM
-    elements.prepend(cardElement);
-    closeAddCardPopup();
-}
+
 
 //Функция закрытия попапа на ESC
 function pressedEsc(evt) {
@@ -106,6 +101,22 @@ const renderDefaultCards = new Section(
     },
     elementsSelector);
 renderDefaultCards.renderItems();
+
+
+
+//Функция добавляет карточки пользователя
+function addCardSubmitForm(evt) {
+    evt.preventDefault();
+    const data = {
+        name: inputTitle.value,
+        link: inputLink.value
+    }
+    const newCard = createCard(data);
+    const cardElement = newCard.generateCard();
+    // Добавляем в DOM
+    elements.prepend(cardElement);
+    closeAddCardPopup();
+}
 
 // Функция закрытия через клик и оверлей
 function closeClick(evt) {

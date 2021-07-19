@@ -61,7 +61,10 @@ export const inputName = document.querySelector('.popup__input_type_name');
 export const inputTitle = popupTypeAdd.querySelector('.popup__input_type_title');
 export const descriptionInput = document.querySelector('.popup__input_type_description');
 export const elements = document.querySelector('.elements');
+// Селекторы для классов
 export const elementsSelector = '.elements';
+export const userNameSelector = '.profile__name';
+export const userInfoSelector = '.profile__description';
 // Раскрытые изображения
 export const inputLink = popupTypeAdd.querySelector('.popup__input_type_link');
 export const openLink = popupTypeImg.querySelector('.popup__image');
