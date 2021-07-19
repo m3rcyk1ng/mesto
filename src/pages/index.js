@@ -1,6 +1,6 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
-import initialCards from "../utils/constants.js";
+import {initialCards} from "../utils/constants.js";
 
 // Кнопочки
 const editButton = document.querySelector('.profile__button-edit');
