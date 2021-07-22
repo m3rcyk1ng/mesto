@@ -47,13 +47,6 @@ function handleCardClick(name, link) {
 }
 
 // ↓ Закрытия ↓
-//Функция закрытия попапа
-function closePopup(popupType) {
-    //Удаление слушателей
-    document.removeEventListener('keydown', pressedEsc);
-    popupType.removeEventListener('click', closeClick);
-    popupType.classList.remove('popup_open');
-}
 
 // Функция закрытия попапа редактирования
 function closeEditPopup() {
@@ -76,13 +69,13 @@ function createCard(data) {
 }
 
 
-//Функция закрытия попапа на ESC
-function pressedEsc(evt) {
-    if (evt.key === 'Escape') {
-        const activePopup = document.querySelector('.popup_open');
-        closePopup(activePopup);
-    }
-}
+// //Функция закрытия попапа на ESC
+// function pressedEsc(evt) {
+//     if (evt.key === 'Escape') {
+//         const activePopup = document.querySelector('.popup_open');
+//         closePopup(activePopup);
+//     }
+// }
 
 const validateFormEdit = new FormValidator(validationObj, submitFormEdit);
 validateFormEdit.enableValidation();
@@ -118,11 +111,11 @@ function addCardSubmitForm(evt) {
     closeAddCardPopup();
 }
 
-// Функция закрытия через клик и оверлей
-function closeClick(evt) {
-    if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__button-close')) {
-        closePopup(evt.currentTarget);
-    }
+// // Функция закрытия через клик и оверлей
+// function closeClick(evt) {
+//     if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__button-close')) {
+//         closePopup(evt.currentTarget);
+//     }
 }
 
 // ↓ Слушатели ↓
