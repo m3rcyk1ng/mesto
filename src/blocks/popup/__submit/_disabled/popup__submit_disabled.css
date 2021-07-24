@@ -6,3 +6,7 @@
     cursor: default;
     transition: 1s ease 0s;
 }
+
+.popup__submit_disabled:hover {
+  cursor: default;
+}
