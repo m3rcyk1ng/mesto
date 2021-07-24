@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keyword" content="Кусто, Россия, Места, Путешествия">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
 <body class="page">
@@ -14,7 +13,7 @@
 <main class="content">
     <section class="profile">
         <div class="profile__titles">
-            <img class="profile__avatar" title="" src="./images/avatar.gif" alt="Аватарка">
+            <img class="profile__avatar" title="" src="<%=require('./images/avatar.gif')%>" alt="Аватарка">
             <div class="profile__titles-box">
                 <div class="profile__title-box">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -47,9 +46,9 @@
     <form class="popup__container" method="post" name="createForm">
         <button class="popup__button-close" type="button"></button>
         <h3 class="popup__title">Новое место</h3>
-        <input class="popup__input popup__input_type_title" placeholder="Название" type="text" name="CardTitle" id="place" minlength="2" maxlength="30" required>
+        <input class="popup__input popup__input_type_title" placeholder="Название" type="text" name="name" id="place" minlength="2" maxlength="30" required>
         <span class="popup__input-error place-error"></span>
-        <input class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" type="url" name="CardLink" id="link" required>
+        <input class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" type="url" name="link" id="link" required>
         <span class="popup__input-error link-error"></span>
         <button class="popup__submit" type="submit">Создать</button>
     </form>
@@ -73,6 +72,5 @@
         </div>
     </article>
 </template>
-<script type="module" src="./pages/index.js"></script>
 </body>
 </html>

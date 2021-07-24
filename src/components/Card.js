@@ -34,6 +34,7 @@ export default class Card {
     _likeMePlease() {
         this._like.classList.toggle('element__like_active');
     }
+
     _deleteMePlease() {
         this._element.querySelector('.element__delete-icon').closest('.element').remove();
     }
