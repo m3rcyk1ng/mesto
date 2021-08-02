@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d4541d5-7594-4098-9ef6-02c9330d961e" name="Default Changelist" comment="feat: подготовить class Popup">
-      <change afterPath="$PROJECT_DIR$/src/blocks/element/__like-container/element__like-container.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/element/__like-counter/element__like-counter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/element/__delete-icon/element__delete-icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/element/__delete-icon/element__delete-icon.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Section.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
-    </list>
+    <list default="true" id="4d4541d5-7594-4098-9ef6-02c9330d961e" name="Default Changelist" comment="feat: подготовка первых 4х заданий" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +92,7 @@
       <workItem from="1626964380198" duration="4339000" />
       <workItem from="1627145477539" duration="2891000" />
       <workItem from="1627148437818" duration="616000" />
-      <workItem from="1627909848013" duration="15793000" />
+      <workItem from="1627909848013" duration="16419000" />
     </task>
     <task id="LOCAL-00001" summary="feat: переделать структуру">
       <created>1626639838521</created>
@@ -127,7 +115,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626727322972</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: подготовка первых 4х заданий">
+      <created>1627931173745</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1627931173745</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: подготовка первых 4х заданий">
+      <created>1627931771111</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1627931771111</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +152,7 @@
     <MESSAGE value="feat: начать писать webpack" />
     <MESSAGE value="feat: подготовить class Section" />
     <MESSAGE value="feat: подготовить class Popup" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: подготовить class Popup" />
+    <MESSAGE value="feat: подготовка первых 4х заданий" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: подготовка первых 4х заданий" />
   </component>
 </project>
