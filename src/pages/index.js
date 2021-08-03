@@ -33,23 +33,68 @@ validateFormEdit.enableValidation();
 const validateFormAdd = new FormValidator(validationObj, submitFormAdd);
 validateFormAdd.enableValidation();
 
-const classSection = new Section(
-    {
-        renderer: (item) => {
-            const card = createCard(item);
-            const cardElement = card.generateCard();
-            classSection.addItem(cardElement);
-        }
-    },
-    elementsSelector);
-
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-26', 'abf7489c-028b-40af-8a54-88899dd941f0');
+
+function handleCardDelete() {
+
+
+}
+
+function handleCardLike(card) {
+    console.log(card.likes)
+
+    const likeToggle = card.isLiked() ? api.deleteLikeUpdate(card.cardId) : api.addLikeUpdate(card.cardId);
+    likeToggle.then((res) => {
+        // console.log(card.likes)
+
+        card.likes = res.likes;
+        // console.log(card.likes)
+        // console.log(res.likes);
+        card.handleToggleLike();
+        card.updateLikes(res.likes.length);
+    })
+        .catch((err) => console.log(err));
+}
+
+function handleCardClick(name, link) {
+    const popupImg = new PopupWithImage(
+        {name, link},
+        popupImgSelector);
+    popupImg.open();
+    popupImg.setEventListeners();
+}
+
+    function createCard(data, userId) {
+    // console.log(userId);
+    return new Card(data, '.element-template', handleCardClick, handleCardDelete, handleCardLike, userId);
+}
 
 // Промисы для получения информации с сервера и рендера её
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userDataServer, cardsDataServer]) => {
+
+        userInfo.setUserInfo(userDataServer.name, userDataServer.about, userDataServer._id);
+
+        //createCard(cardsDataServer, userDataServer._id);
+        const classSection = new Section(
+            {
+                renderer: (item) => {
+                    const card = createCard(item, userDataServer._id);
+                    const cardElement = card.generateCard();
+                    classSection.addItem(cardElement);
+                }
+            },
+            elementsSelector);
+
         classSection.renderItems(cardsDataServer);
-        userInfo.setUserInfo(userDataServer.name, userDataServer.about);
+
+
+
+
+
+
+
+
 
         const popupEdit = new PopupWithForm(
             popupEditSelector,
@@ -82,7 +127,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
             function handlerSubmitForm(CardData) {
                 api.addNewCard(CardData.name, CardData.link)
                     .then((data) => {
-                        const newCard = createCard(data);
+                        const userId = userDataServer._id;
+                        const newCard = createCard(data, userId);
                         const cardElement = newCard.generateCard();
                         // Добавляем в DOM
                         classSection.addItem(cardElement);
@@ -91,12 +137,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
             }
         );
             popupAdd.setEventListeners();
-
-
-
-
-
-
 
         addCardButton.addEventListener('click', () => {
             popupAdd.open();
@@ -134,16 +174,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 //     }
 // );
 
-function createCard(data) {
-    return new Card(data, '.element-template',
-        function handleCardClick(name, link) {
-            const popupImg = new PopupWithImage(
-                {name, link},
-                popupImgSelector);
-            popupImg.open();
-            popupImg.setEventListeners();
-        });
-}
+
 
 // Функция открытия редактирования
 // function openEditPopup() {

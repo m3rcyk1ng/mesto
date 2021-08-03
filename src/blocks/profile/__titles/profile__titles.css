@@ -1,5 +1,6 @@
 .profile__titles {
     display: flex;
+    position: relative;
     align-items: center;
 }
 
