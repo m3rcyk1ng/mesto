@@ -4,6 +4,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithSubmit from "../components/PopupWithSubmit.js";
 import Api from "../components/Api.js";
 
 import './index.css';
@@ -22,6 +23,7 @@ import {
     elementsSelector,
     userNameSelector,
     userInfoSelector,
+    popupDeleteSubmit,
 } from "../utils/constants.js";
 
 // Тут большинство NEW
@@ -35,14 +37,24 @@ validateFormAdd.enableValidation();
 
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-26', 'abf7489c-028b-40af-8a54-88899dd941f0');
 
-function handleCardDelete() {
+const popupDelete = new PopupWithSubmit(
+    function handlerSubmitForm(card){
+    api.deleteCard(card.cardId)
+        .then(response => {
+            if (response.message === "Пост удалён") {
+                card.deleteMePlease();
+                popupDelete.close();
+            }
+        });
+    },
+    popupDeleteSubmit);
 
-
+function handleCardDelete(card) {
+    popupDelete.open(card);
+    popupDelete.setEventListeners();
 }
 
 function handleCardLike(card) {
-    console.log(card.likes)
-
     const likeToggle = card.isLiked() ? api.deleteLikeUpdate(card.cardId) : api.addLikeUpdate(card.cardId);
     likeToggle.then((res) => {
         // console.log(card.likes)
@@ -64,24 +76,21 @@ function handleCardClick(name, link) {
     popupImg.setEventListeners();
 }
 
-    function createCard(data, userId) {
-    // console.log(userId);
-    return new Card(data, '.element-template', handleCardClick, handleCardDelete, handleCardLike, userId);
+function createCard(data, userId) {
+    const newCard = new Card(data, '.element-template', handleCardClick, handleCardDelete, handleCardLike, userId);
+    return newCard.createCard();
 }
 
 // Промисы для получения информации с сервера и рендера её
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userDataServer, cardsDataServer]) => {
-
         userInfo.setUserInfo(userDataServer.name, userDataServer.about, userDataServer._id);
 
-        //createCard(cardsDataServer, userDataServer._id);
         const classSection = new Section(
             {
                 renderer: (item) => {
                     const card = createCard(item, userDataServer._id);
-                    const cardElement = card.generateCard();
-                    classSection.addItem(cardElement);
+                    classSection.addItem(card);
                 }
             },
             elementsSelector);
@@ -129,9 +138,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
                     .then((data) => {
                         const userId = userDataServer._id;
                         const newCard = createCard(data, userId);
-                        const cardElement = newCard.generateCard();
                         // Добавляем в DOM
-                        classSection.addItem(cardElement);
+                        classSection.addItem(newCard);
                         popupAdd.close();
                     })
             }

@@ -60,7 +60,7 @@ export default class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
     }
 
-    addLikeUpdate (cardId) {
+    addLikeUpdate(cardId) {
         return fetch(`${this._link}/cards/likes/${cardId}`, {
             method: 'PUT',
             headers: {
@@ -71,7 +71,7 @@ export default class Api {
             .then(this._checkStatus);
     }
 
-    deleteLikeUpdate (cardId) {
+    deleteLikeUpdate(cardId) {
         return fetch(`${this._link}/cards/likes/${cardId}`, {
             method: 'DELETE',
             headers: {
@@ -82,5 +82,15 @@ export default class Api {
             .then(this._checkStatus);
     }
 
+    deleteCard(cardId) {
+        return fetch(`${this._link}/cards/${cardId}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(this._checkStatus);
+    }
 
 }

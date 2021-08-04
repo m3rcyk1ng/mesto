@@ -28,3 +28,4 @@ export const userInfoSelector = '.profile__description';
 export const popupEditSelector = '.popup_type_edit';
 export const popupAddSelector = '.popup_type_add';
 export const popupImgSelector = '.popup_type_image';
+export const popupDeleteSubmit = '.popup_type_delete';
