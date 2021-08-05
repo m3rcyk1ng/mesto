@@ -1,0 +1,18 @@
+.popup_type_update-avatar .popup__container {
+    min-height: 260px;
+    display: flex;
+}
+
+.popup_type_update-avatar .popup__title {
+    padding-bottom: 40px;
+}
+
+.popup_type_update-avatar .popup__input {
+    margin-left: 36px;
+}
+
+.popup_type_update-avatar .popup__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

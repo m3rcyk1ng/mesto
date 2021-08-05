@@ -57,6 +57,19 @@
     </form>
 </div>
 
+<!-- Попап обновления аватарки -->
+<div class="popup popup_type_update-avatar">
+    <div class="popup__container">
+        <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
+        <form class="form form_type_avatar" name="form-avatar" novalidate>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <input class="popup__input" id="avatar" type="url" name="avatar" placeholder="Ссылка на новую аватарку" required>
+            <span class="popup__input-error avatar-error"></span>
+            <button class="popup__submit" type="submit">Сохранить</button>
+        </form>
+    </div>
+</div>
+
 <!-- Попап удаления карточки -->
 <div class="popup popup_type_delete">
     <div class="popup__container">

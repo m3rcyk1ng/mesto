@@ -93,4 +93,16 @@ export default class Api {
             .then(this._checkStatus);
     }
 
+    updateAvatar(avatar) {
+        return fetch(`${this._link}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(avatar)
+        })
+            .then(this._checkStatus);
+    }
+
 }

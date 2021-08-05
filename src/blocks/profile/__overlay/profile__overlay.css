@@ -11,11 +11,12 @@
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0;
-    /* Анимацию ещё бы */
 }
 
 .profile__overlay:hover {
     opacity: 1;
+    cursor: pointer;
+    transition: 0.5s ease;
 }
 
 @media screen and (max-width: 787px) {
