@@ -144,10 +144,10 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
         const popupAdd = new PopupWithForm(
             popupAddSelector,
             function handlerSubmitForm(CardData) {
-                popupAdd.updateTextOnButton('Сохранение...');
+                popupAdd.updateTextOnButton('Создание...');
                 api.addNewCard(CardData.name, CardData.link)
                     .then((data) => {
-                        popupUpdateAvatar.updateTextOnButton('Создать');
+                        popupAdd.updateTextOnButton('Создать');
                         const userId = userDataServer._id;
                         const newCard = createCard(data, userId);
                         classSection.addItem(newCard);
