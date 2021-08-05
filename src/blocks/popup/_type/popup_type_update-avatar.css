@@ -9,9 +9,11 @@
 
 .popup_type_update-avatar .popup__input {
     margin-left: 36px;
+    margin-bottom: 0;
 }
 
 .popup_type_update-avatar .popup__submit {
+    margin-top: 26px;
     display: flex;
     justify-content: center;
     align-items: center;

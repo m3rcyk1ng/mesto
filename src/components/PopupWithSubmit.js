@@ -12,7 +12,7 @@ export default class PopupWithSubmit extends Popup {
         this.card = card;
     };
 
-    close () {
+    close() {
         super.close();
     };
 
@@ -21,8 +21,8 @@ export default class PopupWithSubmit extends Popup {
         this._handlerSubmitForm(this.card);
     };
 
-    setEventListeners () {
+    setEventListeners() {
         super.setEventListeners();
         this._formElement.addEventListener('submit', this._handlerSubmit);
     };
-}
+};

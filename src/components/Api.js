@@ -52,7 +52,6 @@ export default class Api {
             .then(this._checkStatus);
     }
 
-
     _checkStatus(res) {
         if (res.ok) {
             return res.json();
@@ -100,9 +99,10 @@ export default class Api {
                 authorization: this._token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(avatar)
+            body: JSON.stringify({
+                avatar: avatar
+            })
         })
             .then(this._checkStatus);
     }
-
 }

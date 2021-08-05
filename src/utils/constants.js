@@ -28,6 +28,7 @@ export const descriptionInput = document.querySelector('.popup__input_type_descr
 export const elementsSelector = '.elements';
 export const userNameSelector = '.profile__name';
 export const userInfoSelector = '.profile__description';
+export const userAvatarSelector = '.profile__avatar';
 export const popupEditSelector = '.popup_type_edit';
 export const popupAddSelector = '.popup_type_add';
 export const popupImgSelector = '.popup_type_image';
