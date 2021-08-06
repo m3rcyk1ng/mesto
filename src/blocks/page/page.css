@@ -11,6 +11,23 @@
     position: relative;
 }
 
+::-webkit-scrollbar-track {
+    background-color: #363332;
+    box-shadow:0 0 5px #000 inset;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #ffcb17;
+    background-image:url('https://yraaa.ru/_pu/24/59610063.png');
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
 /*div, p, h1, h2, h3, ul, li, a, img {*/
 /*   outline: 1.5px red dashed;*/
 /*}*/
