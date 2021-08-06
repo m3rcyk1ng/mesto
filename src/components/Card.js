@@ -31,6 +31,7 @@ export default class Card {
         // Добавим данные
         this._cardImage = this._element.querySelector('.element__photo');
         this.buttonDeleteCard = this._element.querySelector('.element__delete-icon');
+        this._overlayClick = this._element.querySelector('.element__overlay');
         this._cardImage.src = this._link;
         this._cardImage.alt = this._name;
         this._element.querySelector('.element__title').textContent = this._name;
@@ -77,7 +78,7 @@ export default class Card {
             this._handleCardDelete(this);
         });
 
-        this._cardImage.addEventListener('click', () => {
+        this._overlayClick.addEventListener('click', () => {
             this._handleCardClick(this._name, this._link);
         });
     }

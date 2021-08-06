@@ -12,10 +12,6 @@ export default class PopupWithSubmit extends Popup {
         this.card = card;
     };
 
-    close() {
-        super.close();
-    };
-
     _handlerSubmit = (evt) => {
         evt.preventDefault();
         this._handlerSubmitForm(this.card);

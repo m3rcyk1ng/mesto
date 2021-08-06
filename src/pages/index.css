@@ -30,7 +30,7 @@
 @import url(../blocks/element/__photo/element__photo.css);
 @import url(../blocks/element/__description/element__description.css);
 @import url(../blocks/element/__delete-icon/element__delete-icon.css);
-@import url(../blocks/element/__overlay/element_overlay.css);
+@import url(../blocks/element/__overlay/element__overlay.css);
 
 /* === footer === */
 @import url(../blocks/footer/footer.css);

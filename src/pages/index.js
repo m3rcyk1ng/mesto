@@ -42,6 +42,9 @@ validateFormAdd.enableValidation();
 const validateFormUpdateAvatar = new FormValidator(validationObj, submitFormUpdate);
 validateFormUpdateAvatar.enableValidation();
 
+const popupImg = new PopupWithImage(popupImgSelector);
+popupImg.setEventListeners();
+
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-26', 'abf7489c-028b-40af-8a54-88899dd941f0');
 
 const popupDelete = new PopupWithSubmit(
@@ -57,11 +60,10 @@ const popupDelete = new PopupWithSubmit(
             .catch((err) => console.log(err));
     },
     popupDeleteSubmitSelector);
-
+popupDelete.setEventListeners();
 // ФУНКЦИИ //
 function handleCardDelete(card) {
     popupDelete.open(card);
-    popupDelete.setEventListeners();
 }
 
 function handleCardLike(card) {
@@ -75,11 +77,7 @@ function handleCardLike(card) {
 }
 
 function handleCardClick(name, link) {
-    const popupImg = new PopupWithImage(
-        {name, link},
-        popupImgSelector);
-    popupImg.open();
-    popupImg.setEventListeners();
+    popupImg.open({name, link});
 }
 
 function createCard(data, userId) {
