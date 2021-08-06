@@ -13,7 +13,7 @@
 
 ::-webkit-scrollbar-track {
     background-color: #363332;
-    box-shadow:0 0 5px #000 inset;
+    box-shadow: 0 0 5px #000 inset;
 }
 
 ::-webkit-scrollbar-thumb {
